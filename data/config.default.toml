@@ -1,0 +1,11 @@
+[openai]
+base_url = "https://api.groq.com/openai/v1"
+token = "..."
+
+[models]
+planner = "qwen-qwq-32b"          # Creates and manages a plan
+scraper = "llama-3.3-70b-specdec" # Extracts information from scraped html
+writer = "llama-3.1-8b-instant"   # Handles communication with user
+
+[updates]
+enableCheck = true
