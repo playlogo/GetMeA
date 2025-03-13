@@ -1,0 +1,301 @@
+[](https://docs.deno.com/ "Deno docs home")[Manual](https://docs.deno.com/runtime/)[API reference](https://docs.deno.com/api/)[Examples](https://docs.deno.com/examples/)[Deploy](https://docs.deno.com/deploy/manual/)[Subhosting](https://docs.deno.com/subhosting/manual/)[deno.com](https://deno.com)Toggle Theme
+  * [Manual](https://docs.deno.com/runtime/)
+  * [API reference](https://docs.deno.com/api/)
+  * [Examples](https://docs.deno.com/examples/)
+  * [Deploy](https://docs.deno.com/deploy/manual/)
+  * [Subhosting](https://docs.deno.com/subhosting/manual/)
+
+
+## [Getting started](https://docs.deno.com/runtime/)
+  * [Installation](https://docs.deno.com/runtime/getting_started/installation/)
+  * [First project](https://docs.deno.com/runtime/getting_started/first_project/)
+  * [Setup your environment](https://docs.deno.com/runtime/getting_started/setup_your_environment/)
+  * [Command line interface](https://docs.deno.com/runtime/getting_started/command_line_interface/)
+
+
+## [Fundamentals](https://docs.deno.com/runtime/fundamentals/)
+  * [TypeScript](https://docs.deno.com/runtime/fundamentals/typescript/)
+  * [Node](https://docs.deno.com/runtime/fundamentals/node/)
+  * [Security](https://docs.deno.com/runtime/fundamentals/security/)
+  * [Modules and dependencies](https://docs.deno.com/runtime/fundamentals/modules/)
+  * [Configuration](https://docs.deno.com/runtime/fundamentals/configuration/)
+  * [Standard library](https://docs.deno.com/runtime/fundamentals/standard_library/)
+  * [Web development](https://docs.deno.com/runtime/fundamentals/web_dev/)
+  * [Testing](https://docs.deno.com/runtime/fundamentals/testing/)
+  * [Debugging](https://docs.deno.com/runtime/fundamentals/debugging/)
+  * [Workspaces](https://docs.deno.com/runtime/fundamentals/workspaces/)
+  * [Linting and formatting](https://docs.deno.com/runtime/fundamentals/linting_and_formatting/)
+  * [HTTP Server](https://docs.deno.com/runtime/fundamentals/http_server/)
+  * [OpenTelemetry](https://docs.deno.com/runtime/fundamentals/open_telemetry/)
+  * [Stability and releases](https://docs.deno.com/runtime/fundamentals/stability_and_releases/)
+
+
+## [Reference guides](https://docs.deno.com/runtime/reference/)
+  * CLI
+    * [deno add](https://docs.deno.com/runtime/reference/cli/add/)
+    * [deno bench](https://docs.deno.com/runtime/reference/cli/bench/)
+    * [deno check](https://docs.deno.com/runtime/reference/cli/check/)
+    * [deno clean](https://docs.deno.com/runtime/reference/cli/clean/)
+    * [deno compile](https://docs.deno.com/runtime/reference/cli/compile/)
+    * [deno completions](https://docs.deno.com/runtime/reference/cli/completions/)
+    * [deno coverage](https://docs.deno.com/runtime/reference/cli/coverage/)
+    * [deno doc](https://docs.deno.com/runtime/reference/cli/doc/)
+    * [deno eval](https://docs.deno.com/runtime/reference/cli/eval/)
+    * [deno fmt](https://docs.deno.com/runtime/reference/cli/fmt/)
+    * [deno info](https://docs.deno.com/runtime/reference/cli/info/)
+    * [deno init](https://docs.deno.com/runtime/reference/cli/init/)
+    * [deno install](https://docs.deno.com/runtime/reference/cli/install/)
+    * [deno jupyter](https://docs.deno.com/runtime/reference/cli/jupyter/)
+    * [deno lint](https://docs.deno.com/runtime/reference/cli/lint/)
+    * [deno outdated](https://docs.deno.com/runtime/reference/cli/outdated/)
+    * [deno publish](https://docs.deno.com/runtime/reference/cli/publish/)
+    * [deno lsp](https://docs.deno.com/runtime/reference/cli/lsp/)
+    * [deno remove](https://docs.deno.com/runtime/reference/cli/remove/)
+    * [deno repl](https://docs.deno.com/runtime/reference/cli/repl/)
+    * [deno run](https://docs.deno.com/runtime/reference/cli/run/)
+    * [deno serve](https://docs.deno.com/runtime/reference/cli/serve/)
+    * [deno task](https://docs.deno.com/runtime/reference/cli/task/)
+    * [deno test](https://docs.deno.com/runtime/reference/cli/test/)
+    * [deno types](https://docs.deno.com/runtime/reference/cli/types/)
+    * [deno uninstall](https://docs.deno.com/runtime/reference/cli/uninstall/)
+    * [deno upgrade](https://docs.deno.com/runtime/reference/cli/upgrade/)
+    * [deno unstable flags](https://docs.deno.com/runtime/reference/cli/unstable_flags/)
+  * [Deno APIs](https://docs.deno.com/runtime/reference/deno_namespace_apis/)
+  * [Web APIs](https://docs.deno.com/runtime/reference/web_platform_apis/)
+  * [Node APIs](https://docs.deno.com/runtime/reference/node_apis/)
+  * [TS Config Migration](https://docs.deno.com/runtime/reference/ts_config_migration/)
+  * [Continuous Integration](https://docs.deno.com/runtime/reference/continuous_integration/)
+  * [Environment variables](https://docs.deno.com/runtime/reference/env_variables/)
+  * [Deno & VS Code](https://docs.deno.com/runtime/reference/vscode/)
+  * [Using JSX and React](https://docs.deno.com/runtime/reference/jsx/)
+  * [Testing code in docs](https://docs.deno.com/runtime/reference/documentation/)
+  * [Lint Plugins](https://docs.deno.com/runtime/reference/lint_plugins/)
+  * [WebAssembly](https://docs.deno.com/runtime/reference/wasm/)
+  * [Migration Guide](https://docs.deno.com/runtime/reference/migration_guide/)
+  * [LSP integration](https://docs.deno.com/runtime/reference/lsp_integration/)
+  * [Docker](https://docs.deno.com/runtime/reference/docker/)
+
+
+## [Contributing and support](https://docs.deno.com/runtime/contributing/)
+  * Contributing to Deno
+    * [Architecture](https://docs.deno.com/runtime/contributing/architecture/)
+    * [Building from source](https://docs.deno.com/runtime/contributing/building_from_source/)
+    * [Profiling](https://docs.deno.com/runtime/contributing/profiling/)
+    * [Release schedule](https://docs.deno.com/runtime/contributing/release_schedule/)
+    * [Style guide](https://docs.deno.com/runtime/contributing/style_guide/)
+    * [Web platform tests](https://docs.deno.com/runtime/contributing/web_platform_tests/)
+    * [Documentation](https://docs.deno.com/runtime/contributing/docs/)
+    * [Examples](https://docs.deno.com/runtime/contributing/examples/)
+  * [Help](https://docs.deno.com/runtime/help/)
+
+
+  * [Runtime](https://docs.deno.com/runtime/)
+  * [Getting started](https://docs.deno.com/runtime/)
+  * Installation
+
+On this page
+  * [Download and install ](https://docs.deno.com/runtime/getting_started/installation/#download-and-install)
+  * [Docker ](https://docs.deno.com/runtime/getting_started/installation/#docker)
+  * [Testing your installation ](https://docs.deno.com/runtime/getting_started/installation/#testing-your-installation)
+  * [Updating ](https://docs.deno.com/runtime/getting_started/installation/#updating)
+  * [Building from source ](https://docs.deno.com/runtime/getting_started/installation/#building-from-source)
+
+
+# Installation
+Deno works on macOS, Linux, and Windows. Deno is a single binary executable. It has no external dependencies. On macOS, both M1 (arm64) and Intel (x64) executables are provided. On Linux and Windows, only x64 is supported.
+## Download and install [Jump to heading#](https://docs.deno.com/runtime/getting_started/installation/#download-and-install)
+provides convenience scripts to download and install the binary.
+Using Shell:
+```
+curl -fsSL https://deno.land/install.sh | sh
+
+```
+
+Using :
+```
+npm install -g deno
+
+```
+
+> The startup time of the Deno command gets affected if it's installed via npm. We recommend the shell install script for better performance.
+Using :
+```
+brew install deno
+
+```
+
+Using :
+```
+sudo port install deno
+
+```
+
+Using :
+```
+nix-shell -p deno
+
+```
+
+Using :
+```
+asdf plugin add deno https://github.com/asdf-community/asdf-deno.git
+# Download and install the latest version of Deno
+asdf install deno latest
+# To set as the default version of Deno globally
+asdf set -u deno latest
+# To set as the default version of Deno locally (current project only)
+asdf set deno latest
+
+```
+
+Using :
+```
+vfox add deno
+# Download and install the latest version of Deno
+vfox install deno@latest
+# To set the version of Deno globally
+vfox use --global deno
+
+```
+
+Using PowerShell (Windows):
+```
+irm https://deno.land/install.ps1 | iex
+
+```
+
+Using :
+```
+npm install -g deno
+
+```
+
+> The startup time of the Deno command gets affected if it's installed via npm. We recommend the PowerShell install script for better performance.
+Using :
+```
+scoop install deno
+
+```
+
+Using :
+```
+choco install deno
+
+```
+
+Using :
+```
+winget install DenoLand.Deno
+
+```
+
+Using :
+```
+vfox add deno
+# Download and install the latest version of Deno
+vfox install deno@latest
+# To set the version of Deno globally
+vfox use --global deno
+
+```
+
+Using Shell:
+```
+curl -fsSL https://deno.land/install.sh | sh
+
+```
+
+Using :
+```
+npm install -g deno
+
+```
+
+> The startup time of the Deno command gets affected if it's installed via npm. We recommend the shell install script for better performance.
+Using :
+```
+nix-shell -p deno
+
+```
+
+Using :
+```
+asdf plugin add deno https://github.com/asdf-community/asdf-deno.git
+# Download and install the latest version of Deno
+asdf install deno latest
+# To set as the default version of Deno globally
+asdf set -u deno latest
+# To set as the default version of Deno locally (current project only)
+asdf set deno latest
+
+```
+
+Using :
+```
+vfox add deno
+# Download and install the latest version of Deno
+vfox install deno@latest
+# To set the version of Deno globally
+vfox use --global deno
+
+```
+
+You can also build and install from source using :
+```
+cargo install deno --locked
+
+```
+
+Deno binaries can also be installed manually, by downloading a zip file at . These packages contain just a single executable file. You will have to set the executable bit on macOS and Linux.
+## Docker [Jump to heading#](https://docs.deno.com/runtime/getting_started/installation/#docker)
+For more information and instructions on the official Docker images: 
+## Testing your installation [Jump to heading#](https://docs.deno.com/runtime/getting_started/installation/#testing-your-installation)
+To test your installation, run deno --version. If this prints the Deno version to the console the installation was successful.
+Use deno help to see help text documenting Deno's flags and usage. Get a detailed guide on the CLI [here](https://docs.deno.com/runtime/getting_started/command_line_interface/).
+## Updating [Jump to heading#](https://docs.deno.com/runtime/getting_started/installation/#updating)
+To update a previously installed version of Deno, you can run:
+```
+deno upgrade
+
+```
+
+Or using (Windows):
+```
+winget upgrade DenoLand.Deno
+
+```
+
+This will fetch the latest release from , unzip it, and replace your current executable with it.
+You can also use this utility to install a specific version of Deno:
+```
+deno upgrade --version 1.0.1
+
+```
+
+## Building from source [Jump to heading#](https://docs.deno.com/runtime/getting_started/installation/#building-from-source)
+Information about how to build from source can be found in the [Contributing](https://docs.deno.com/runtime/contributing/building_from_source/) chapter.
+## Did you find what you needed?
+  * [Download and install ](https://docs.deno.com/runtime/getting_started/installation/#download-and-install)
+  * [Docker ](https://docs.deno.com/runtime/getting_started/installation/#docker)
+  * [Testing your installation ](https://docs.deno.com/runtime/getting_started/installation/#testing-your-installation)
+  * [Updating ](https://docs.deno.com/runtime/getting_started/installation/#updating)
+  * [Building from source ](https://docs.deno.com/runtime/getting_started/installation/#building-from-source)
+
+
+### Deno Docs
+  * [Deno Runtime](https://docs.deno.com/runtime/)
+  * [Deno Deploy](https://docs.deno.com/deploy/manual/)
+  * [Deno Subhosting](https://docs.deno.com/subhosting/manual/)
+  * [Examples](https://docs.deno.com/examples/)
+
+
+### Community
+### Help & Feedback
+### Company
+  * [Blog](https://deno.com/blog)
+  * [Careers](https://deno.com/jobs)
+  * [Merch](https://merch.deno.com/)
+  * [Privacy Policy](https://docs.deno.com/deploy/manual/privacy-policy)
+
+
+Copyright © 2025 the Deno authors.
