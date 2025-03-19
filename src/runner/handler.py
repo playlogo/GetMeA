@@ -32,7 +32,6 @@ def install(program: str):
     success, error = plan.execute()
 
     if success:
-
         print(f"\rDone! Successfully installed {plan.name}")
     else:
         print(f"\rError: " + error)

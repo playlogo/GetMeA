@@ -51,7 +51,7 @@ class BasePrompt:
         self, messages: list[MessageType], double_json=False, reasoning=False
     ):
         req = requests.post(
-            f"{config.getConfig()["openai"]["base_url"]}/chat/completions",
+            f"{config.getConfig()['openai']['base_url']}/chat/completions",
             json={
                 "model": self.model,
                 "messages": messages,
@@ -59,7 +59,7 @@ class BasePrompt:
             },
             headers={
                 "Content-Type": "application/json",
-                "Authorization": f"Bearer {config.getConfig()["openai"]['token']}",
+                "Authorization": f"Bearer {config.getConfig()['openai']['token']}",
             },
         )
 
@@ -90,9 +90,10 @@ class RoutingAgent(BasePrompt):
                     "role": "system",
                     "content": f"""You are a Linux system administration expert! The user will provide the name of a software, library, or program available on Linux.
 
-Your task is to determine whether the software is available in the standard system package registry (such as dnf, apk, etc.) or if the user needs to install it manually by browsing the web (e.g., Bun, NVM [Node Version Manager]).
+Your task is to determine whether the software is available in the standard system package registry (such as dnf, apk, etc.) or if the user needs to install it manually by browsing the web (e.g., Bun, Deno, NVM [Node Version Manager]).
 - Only state that the software is in the package registry if you are ABSOLUTLY certain it is available.
 - If you are unsure, ALWAYS DEFAULT to web research as the preferred installation method.
+- Some modern software like Deno or Bun are not in the system package manages, USE A WEBSEARCH FOR THEM!
 
 For context, the system is running the following Linux distribution:
 {flavor} 
@@ -223,7 +224,7 @@ class PlanningAgent(BasePrompt):
             [
                 {
                     "role": "system",
-                    "content": f"""You are a Linux system administration expert! You are installing {program_name} on a linux pc. 
+                    "content": f"""You are a Linux system administration expert! You are installing {program_name} on a linux pc for the normal user (not root, unless of course needed by software). 
                     
 You have already decided that you need more information for installing this software and have kicked of a websearch with the following result:
 Search Query: {search_query}

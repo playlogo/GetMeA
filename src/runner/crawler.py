@@ -7,6 +7,7 @@ from crawl4ai.content_filter_strategy import BM25ContentFilter
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
 from crawl4ai import HTTPCrawlerConfig
 from crawl4ai.async_crawler_strategy import AsyncHTTPCrawlerStrategy
+from crawl4ai.async_logger import AsyncLogger, AsyncLoggerBase, LogLevel
 
 
 async def async_main(url: str):
@@ -28,10 +29,16 @@ async def async_main(url: str):
         exclude_external_images=True,
         exclude_external_links=True,
         exclude_social_media_links=True,
+        verbose=False,
     )
 
     async with AsyncWebCrawler(
-        crawler_strategy=AsyncHTTPCrawlerStrategy(browser_config=http_config)
+        crawler_strategy=AsyncHTTPCrawlerStrategy(browser_config=http_config),
+        logger=AsyncLogger(
+            verbose=False,
+            log_level=LogLevel.ERROR,
+            tag_width=10,
+        ),
     ) as crawler:
         result = await crawler.arun(
             url=url,

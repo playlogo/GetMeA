@@ -8,6 +8,8 @@ import select
 from runner.agents import RoutingAgent, SearchingAgent, ExtractingAgent, PlanningAgent
 from typing import TypedDict, Literal
 
+from utils.spinner import spinner
+
 
 # Types
 class PlanStepType(TypedDict):
@@ -101,6 +103,8 @@ class Plan:
 class Planner:
     def plan(self, program: str) -> Plan:
         """Create plan to download and install the given software"""
+        spinner.start()
+
         # First: Decide wether it's a package that can be installed with dnf/etc or if we need to research
         routing_res = RoutingAgent().run(program)
 
@@ -113,24 +117,20 @@ class Planner:
                 routing_res["packageInstallCMD"],
                 f"Using system package registry to install {routing_res['name']}",
             )
+            spinner.stop()
             return plan
 
-        print(routing_res["webSearchQuery"])
-
         # DuckDuck the search query
-        print(f"Searching the web: {routing_res['webSearchQuery']}")
+        spinner.message = f"Searching the web: {routing_res['webSearchQuery']}"
         search_res = SearchingAgent().run(routing_res)
 
-        print(search_res)
-
         # Try to extract any hints from website
-        print(f"Gathering intel from '{search_res['bestUrl']}'")
+        spinner.message = f"Inspecting '{search_res['bestUrl']}'"
         extraction_res = ExtractingAgent().run(search_res, routing_res["name"])
 
-        print(extraction_res)
-
         # Construct plan
-        print(f"Planning the attack")
+        spinner.message = f"Planning"
+
         planning_res = PlanningAgent().run(
             extraction_res,
             routing_res["name"],
@@ -138,7 +138,7 @@ class Planner:
             search_res["bestUrl"],
         )
 
-        print(planning_res)
+        spinner.stop()
 
         # Add to plan
         for step in planning_res["steps"]:
