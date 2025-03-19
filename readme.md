@@ -1,6 +1,6 @@
 # GetMeA
 
-> Only Linux supported!
+> Only supports Linux!
 
 > Don't you just want to get a bun ?
 
@@ -8,9 +8,9 @@
 ~: getmea bun
 ```
 
-GetMeA is an AI-powered software installer. It aims to combat the recent trend of not putting software into the distro-specific registries (looking at you, Deno or Bun :p), which leads to developers wasting their precious time googling and getting sidetracked the fricking curl <someaddress> | sh command.
+GetMeA is an AI-powered software installer. It aims to combat the recent trend of not putting software into the distro-specific registries (looking at you, Deno or Bun :p), which leads to developers wasting their precious time googling and getting sidetracked the fricking `curl <someaddress> | sh` command.
 
-Just run getmea and tell it what to install. It will use your system package manager if possible but fall back to searching the web for you and coming up with a plan. Because AI has proven itself to be extremely wacky, you'll, of course, be asked before it runs any commands to protect your highly customized Linux installation.
+Just run getmea and tell it what to install. It will use your system package manager if possible but fall back to searching the web for you and coming up with a plan. Because AI has proven itself to be extremely not reliable, you'll, of course, be asked for confirmation before it runs any commands to protect your highly customized Linux installation.
 
 ## Installation
 

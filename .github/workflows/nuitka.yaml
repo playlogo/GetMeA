@@ -1,33 +1,33 @@
 name: Build standalone executable
 on: [push]
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            # Setup
-            - uses: actions/checkout@v4
-            - uses: actions/setup-python@v5
-              with:
-                  python-version: "3.13.2"
-                  architecture: "x86"
-                  cache: "pip"
-                  cache-dependency-path: |
-                      **/requirements.txt
-            - name: Install Dependencies
-              run: |
-                  pip install -r requirements.txt
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Setup
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13.2"
+          architecture: "x64"
+          cache: "pip"
+          cache-dependency-path: |
+            **/requirements.txt
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
 
-            # Build
-            - uses: Nuitka/Nuitka-Action@main
-              with:
-                  nuitka-version: main
-                  script-name: src/main.py
-                  output-dir: build
-                  output-file: getmea.bin
+      # Build
+      - uses: Nuitka/Nuitka-Action@main
+        with:
+          nuitka-version: main
+          script-name: src/main.py
+          output-dir: build
+          output-file: getmea.bin
 
-            - name: Upload Artifact
-              uses: actions/upload-artifact@v4
-              with:
-                  name: Linux build
-                  path: build/*.bin
-                  include-hidden-files: true
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux build
+          path: build/*.bin
+          include-hidden-files: true

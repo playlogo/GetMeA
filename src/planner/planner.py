@@ -80,12 +80,6 @@ class Plan:
                         sys.stdout.write(f"  {line}")
                         sys.stdout.flush()
 
-                    # If input on stdin -> Write to process stdin (for sudo password, etc)
-                    if sys.stdin in readable:
-                        user_input = sys.stdin.readline()
-                        print(user_input)
-                        process.stdin.write(user_input)
-                        process.stdin.flush()
             except:
                 return (
                     False,
