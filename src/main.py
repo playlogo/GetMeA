@@ -1,9 +1,18 @@
 from args import args, parser
 from setup import setup, update
-from handler import run
+from planner.handler import run
+
+
+from sys import platform
+
 
 # Entrypoint
 if __name__ == "__main__":
+    if platform != "linux" and platform != "linux2":
+        # Currently only supported on linux (due to the nature of a linux package installation tool...)
+        print("GetMeA currently only support linux")
+        exit(-1)
+
     if len(args["args"]) == 0:
         parser.print_usage()
         exit(-1)
