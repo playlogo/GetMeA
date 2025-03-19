@@ -5,12 +5,11 @@ import sys
 import subprocess
 import select
 
-from planner.inference import FirstJudge
+from runner.agents import RoutingAgent, SearchingAgent, ExtractingAgent, PlanningAgent
 from typing import TypedDict, Literal
 
-from sys import exit
 
-
+# Types
 class PlanStepType(TypedDict):
     type: Literal["command"]
     value: str
@@ -59,12 +58,13 @@ class Plan:
             print(f"- Running: {step['value']}")
 
             process = subprocess.Popen(
-                step["value"].split(" "),
+                step["value"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 stdin=subprocess.PIPE,
                 text=True,
                 bufsize=1,
+                shell=True,
             )
             try:
                 while process.poll() is None:
@@ -101,18 +101,47 @@ class Plan:
 class Planner:
     def plan(self, program: str) -> Plan:
         """Create plan to download and install the given software"""
-        # First: Decide weather it's a package that can be installed with dnf/etc or if we need to research
-        judged = FirstJudge().run(program)
+        # First: Decide wether it's a package that can be installed with dnf/etc or if we need to research
+        routing_res = RoutingAgent().run(program)
 
-        plan = Plan(judged["name"], judged["description"])
+        plan = Plan(routing_res["name"], routing_res["description"])
 
         # Check if only a package install
-        if judged["bestSource"] == "PackageRegistry":
+        if routing_res["bestSource"] == "PackageRegistry":
             plan.add_step(
                 "command",
-                judged["packageInstallCMD"],
-                f"Using system package registry to install {judged['name']}",
+                routing_res["packageInstallCMD"],
+                f"Using system package registry to install {routing_res['name']}",
             )
             return plan
+
+        print(routing_res["webSearchQuery"])
+
+        # DuckDuck the search query
+        print(f"Searching the web: {routing_res['webSearchQuery']}")
+        search_res = SearchingAgent().run(routing_res)
+
+        print(search_res)
+
+        # Try to extract any hints from website
+        print(f"Gathering intel from '{search_res['bestUrl']}'")
+        extraction_res = ExtractingAgent().run(search_res, routing_res["name"])
+
+        print(extraction_res)
+
+        # Construct plan
+        print(f"Planning the attack")
+        planning_res = PlanningAgent().run(
+            extraction_res,
+            routing_res["name"],
+            routing_res["webSearchQuery"],
+            search_res["bestUrl"],
+        )
+
+        print(planning_res)
+
+        # Add to plan
+        for step in planning_res["steps"]:
+            plan.add_step("command", step["command"], step["description"])
 
         return plan

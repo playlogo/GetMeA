@@ -1,6 +1,6 @@
 from args import ArgsType
 
-from planner.planner import Planner
+from runner.planner import Planner
 
 from sys import exit
 

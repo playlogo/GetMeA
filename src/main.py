@@ -6,7 +6,7 @@
 
 from args import args, parser
 from setup import setup
-from planner.handler import run
+from runner.handler import run
 
 from sys import platform, exit
 

@@ -14,8 +14,9 @@ Just run getmea and tell it what to install. It will use your system package man
 
 ## Installation
 
-- Download the latest build artifact
-- Run the setup: `./getmea.bin setup`
+- Download the [latest build artifact](https://github.com/playlogo/GetMeA/actions) and unzip it
+- Run it: `./getmea.bin setup`
+- Enjoy!
 
 ## Development
 
