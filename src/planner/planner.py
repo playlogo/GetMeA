@@ -8,6 +8,8 @@ import select
 from planner.inference import FirstJudge
 from typing import TypedDict, Literal
 
+from sys import exit
+
 
 class PlanStepType(TypedDict):
     type: Literal["command"]
@@ -39,7 +41,7 @@ class Plan:
             elif choice in answers:
                 return answers[choice]
 
-    async def print_confirmation(self):
+    def print_confirmation(self):
         # Printing
         print(f"Program name: {self.name}")
         print(f"Description: {self.description}")
@@ -52,7 +54,7 @@ class Plan:
 
         return self.util_ask_y_n("Do you want to execute these steps?")
 
-    async def execute(self):
+    def execute(self):
         for step in self.steps:
             print(f"- Running: {step['value']}")
 
@@ -64,42 +66,49 @@ class Plan:
                 text=True,
                 bufsize=1,
             )
+            try:
+                while process.poll() is None:
+                    # Check process stdout and sys stdin for new outputs/inputs every 0.1s
+                    readable, _, _ = select.select(
+                        [process.stdout, sys.stdin], [], [], 0.1
+                    )
 
-            while process.poll() is None:
-                # Check process stdout and sys stdin for new outputs/inputs every 0.1s
-                readable, _, _ = select.select([process.stdout, sys.stdin], [], [], 0.5)
+                    # If output from the process -> Print!
+                    if process.stdout in readable:
+                        line = process.stdout.readline()
 
-                # If output from the process -> Print!
-                if process.stdout in readable:
-                    line = process.stdout.readline()
+                        sys.stdout.write(f"  {line}")
+                        sys.stdout.flush()
 
-                    sys.stdout.write(f"  {line}")
-                    sys.stdout.flush()
-
-                # If input on stdin -> Write to process stdin (for sudo password, etc)
-                if sys.stdin in readable:
-                    user_input = sys.stdin.readline()
-                    print(user_input)
-                    process.stdin.write(user_input)
-                    process.stdin.flush()
+                    # If input on stdin -> Write to process stdin (for sudo password, etc)
+                    if sys.stdin in readable:
+                        user_input = sys.stdin.readline()
+                        print(user_input)
+                        process.stdin.write(user_input)
+                        process.stdin.flush()
+            except:
+                return (
+                    False,
+                    f"Internal error",
+                )
 
             # TODO: Feed into LLM to try to fix the issue ?
-            code = process.poll()
+            code = process.wait()
 
             if code != 0:
                 return (
                     False,
-                    f" Error running command '{step['value']}', exit code '{code}'",
+                    f"Error running command '{step['value']}', exit code '{code}'",
                 )
 
         return (True, None)
 
 
 class Planner:
-    async def plan(self, program: str) -> Plan:
+    def plan(self, program: str) -> Plan:
         """Create plan to download and install the given software"""
         # First: Decide weather it's a package that can be installed with dnf/etc or if we need to research
-        judged = await FirstJudge().run(program)
+        judged = FirstJudge().run(program)
 
         plan = Plan(judged["name"], judged["description"])
 
@@ -111,3 +120,5 @@ class Planner:
                 f"Using system package registry to install {judged['name']}",
             )
             return plan
+
+        return plan

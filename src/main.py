@@ -1,9 +1,14 @@
+# Args for nuitka
+# nuitka-project: --mode=onefile
+# nuitka-project: --include-data-dir=./data=data
+# nuitka-project: --output-filename=getmea.bin
+
+
 from args import args, parser
-from setup import setup, update
+from setup import setup
 from planner.handler import run
 
-
-from sys import platform
+from sys import platform, exit
 
 
 # Entrypoint
@@ -13,16 +18,22 @@ if __name__ == "__main__":
         print("GetMeA currently only support linux")
         exit(-1)
 
+    # CMD help
     if len(args["args"]) == 0:
         parser.print_usage()
         exit(-1)
 
+    if len(args["args"]) == 1 and "help" in args["args"]:
+        parser.print_help()
+        exit(-1)
+
+    # TODO: Updates -> Somehow include git commit hash in compiled build...
+    # if len(args["args"]) == 1 and "update" in args["args"]:
+    #    # Update installation
+    #    update(args)
     if len(args["args"]) == 1 and "setup" in args["args"]:
-        # Initial setup
+        # Update installation
         setup(args)
-    elif len(args["args"]) == 1 and "update" in args["args"]:
-        # Initial setup
-        update(args)
     else:
-        # Software installation
+        # Plan & run installation
         run(args)

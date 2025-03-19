@@ -12,7 +12,7 @@ class ArgsType(TypedDict):
 parser = argparse.ArgumentParser(
     prog="GetMeA",
     description="AI automated software installation",
-    usage="getmea [-h] [-v] [-y] software [software2] ...",
+    usage="getmea [-h] [-v] [-y] software",
     epilog="This product includes software developed by UncleCode (https://x.com/unclecode) as part of the Crawl4AI project (https://github.com/unclecode/crawl4ai).",
 )
 parser.add_argument(

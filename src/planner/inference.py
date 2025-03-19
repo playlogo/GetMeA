@@ -56,7 +56,7 @@ class BasePrompt:
 class FirstJudge(BasePrompt):
     model = config.getConfig()["models"]["planner"]
 
-    async def run(self, program: str) -> FirstJudgeResType:
+    def run(self, program: str) -> FirstJudgeResType:
         # Get linux flavor
         flavor = get_linux_flavor()
 
