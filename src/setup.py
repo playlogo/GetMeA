@@ -1,7 +1,7 @@
 import os
 import sys
 import shutil
-
+import stat
 
 from args import ArgsType
 
@@ -16,12 +16,15 @@ def setup(args: ArgsType):
             os.path.join(os.path.dirname(sys.argv[0]), "getmea.bin"),
             CONFIG_DIR / "getmea.bin",
         )
+
+        # Make executable
+        st = os.stat(CONFIG_DIR / "getmea.bin")
+        os.chmod(CONFIG_DIR / "getmea.bin", st.st_mode | stat.S_IEXEC)
     except Exception as err:
         print(f"Unable to copy build executable to {CONFIG_DIR}: {err}")
 
     # Show user what to add to .bashrc
     print(f"GetMeA was installed to {CONFIG_DIR}")
-    print("Run 'getmea --help' to get started")
 
     # Initiate config
     res = config.getConfig(silent=True)
