@@ -30,7 +30,7 @@ class Config(TypedDict):
     updates: UpdatesConfig
 
 
-NUKITI_CONFIG_DIR = os.path.join(os.path.dirname(__file__), "../data")
+NUKITI_CONFIG_DIR = os.path.join(os.path.dirname(__file__), "./data")
 CONFIG_DIR = Path.home() / ".getmea"
 
 
