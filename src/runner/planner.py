@@ -72,11 +72,17 @@ class Plan:
                 while process.poll() is None:
                     # Check process stdout and sys stdin for new outputs/inputs every 0.1s
                     readable, _, _ = select.select(
-                        [process.stdout, sys.stdin], [], [], 0.1
+                        [process.stdout, process.stderr, sys.stdin], [], [], 0.1
                     )
 
                     # If output from the process -> Print!
                     if process.stdout in readable:
+                        line = process.stdout.readline()
+
+                        sys.stdout.write(f"  {line}")
+                        sys.stdout.flush()
+
+                    if process.stderr in readable:
                         line = process.stdout.readline()
 
                         sys.stdout.write(f"  {line}")
